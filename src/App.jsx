@@ -3,10 +3,14 @@
 //import viteLogo from '/vite.svg'
 import './App.css'
 import Home from './Pages/Home/Home';
+import { GlobalStyled } from './GlobalStyled';
 
 function App() {
   return(
-    <Home />
+   <>
+      <GlobalStyled />
+      <Home />
+   </>
   )
 }
 
