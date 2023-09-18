@@ -1,28 +1,34 @@
 // pegando o array de objetos
 //import { news } from '../../Datas.js';
 
-import { CardContainer, CardBody, CardFooter } from "./CardStyled";
+import { TextLimit } from "../TextLimit/TextLimit";
+import { CardContainer, CardBody, CardFooter, CardHeader } from "./CardStyled";
 
-export function Card(item) {
-    return ( 
-        <CardContainer>
-            <CardBody>
-            <div>
-                <h2>{item.props.title}</  h2>
-                <p>{item.props.text}</p>
-            </div>
-            <img src={item.props.image} alt="Imagem" />
-            </CardBody>
+export function Card(props) {
+    return (
+      <CardContainer>
+        <CardBody>
+          <div>
+            <CardHeader top={props.top}>
+              <h2>{props.title}</h2>
+              <TextLimit text={props.text} limit={150} />
+            </CardHeader>
+  
             <CardFooter>
-                <section>
-                    <i className="bi bi-hand-thumbs-up"></i>
-                    <span>{item.props.likes}</span>
-                </section>
-                <section>
-                    <i className="bi bi-chat"></i>
-                    <span>{item.props.comments}</span>
-                </section>
+              <section>
+                <i className="bi bi-hand-thumbs-up"></i>
+                <span>{props.likes?.length}</span>
+              </section>
+  
+              <section>
+                <i className="bi bi-chat"></i>
+                <span>{props.comments?.length}</span>
+              </section>
             </CardFooter>
-    </CardContainer>
-    )
-}
+          </div>
+  
+          <img src={props.banner} alt="Imagem" />
+        </CardBody>
+      </CardContainer>
+    );
+  }
